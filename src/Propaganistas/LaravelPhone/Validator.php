@@ -16,12 +16,12 @@ class Validator
 			$countries = array($data[$attribute.'_country']);
 		}
 		else {
-			return FALSE;
+			$countries = array('');
 		}
 
 		// Filter out invalid countries.
 		foreach ($countries as $key => $country) {
-			if (!$this->phone_country($country)) {
+			if ($country != '' && !$this->phone_country($country) ) {
 				unset($countries[$key]);
 			}
 		}
